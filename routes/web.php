@@ -34,3 +34,9 @@ Route::middleware(['user','auth','revalidate'])->group(function(){
     Route::put('/profile/{id}',[ProfileController::class,'update']);
 });
 
+Route::middleware(['superadmin','auth','revalidate'])->prefix('superadmin')->name('superadmin.')->group(function(){
+    Route::get('/', function(){
+        return view('superadmin.master');
+    });
+});
+
