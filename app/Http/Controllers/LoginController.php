@@ -45,9 +45,13 @@ class LoginController extends Controller
         ]);
  
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
-            return redirect('/dashboard');
+            if (auth()->user()->role == 'user') {
+                return redirect('/dashboard');
+            }elseif (auth()->user()->role == 'admin') {
+                return redirect('/admin/dashboard');
+            }elseif (auth()->user()->role == 'superadmin') {
+                return redirect('/superadmin/dashboard');
+            }
         }
  
         return back()->withErrors([

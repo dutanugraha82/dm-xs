@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DiagnoseController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuperAdmin\SymptomsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,11 +34,16 @@ Route::middleware(['user','auth','revalidate'])->group(function(){
     Route::get('/profile/{id}', [ProfileController::class,'index']);
     Route::post('/profile/{id}',[ProfileController::class,'store']);
     Route::put('/profile/{id}',[ProfileController::class,'update']);
+    Route::get('/diagnose',[DiagnoseController::class,'index']);
+    Route::post('/diagnose',[DiagnoseController::class,'storeDiagnose']);
 });
 
 Route::middleware(['superadmin','auth','revalidate'])->prefix('superadmin')->name('superadmin.')->group(function(){
-    Route::get('/', function(){
+    Route::get('/dashboard', function(){
         return view('superadmin.master');
     });
+    Route::get('/symptoms', [SymptomsController::class, 'index'])->name('symptoms.index');
+    Route::resource('symptoms', SymptomsController::class)->except('index');
+
 });
 
