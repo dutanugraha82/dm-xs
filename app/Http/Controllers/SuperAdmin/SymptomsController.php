@@ -16,7 +16,7 @@ class SymptomsController extends Controller
      */
     public function index()
     {
-        $data = DB::table('symptoms')->get();
+        $data = Symptoms::all();
         return view('superadmin.contents.symptoms.index', compact('data'));
     }
 
@@ -41,15 +41,19 @@ class SymptomsController extends Controller
         $request->validate([
             'name' => 'required',
             'code' => 'required|unique:symptoms',
-            'min' => 'required',
-            'max' => 'required',
+            'lowStart' => 'required',
+            'highStart' => 'required',
+            'lowEnd' => 'required',
+            'highEnd' => 'required',
         ]);
 
-        Symptoms::create([
+     Symptoms::create([
             'name' => $request->name,
             'code' => $request->code,
-            'min' => $request-> min,
-            'max' => $request->max,
+            'low_start' => $request->lowStart,
+            'high_start' => $request->highStart,
+            'low_end' => $request->lowEnd,
+            'high_end' => $request->highEnd,
         ]);
 
         return redirect(route('superadmin.symptoms.index'));

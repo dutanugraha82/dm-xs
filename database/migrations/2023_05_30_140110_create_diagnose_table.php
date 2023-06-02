@@ -17,10 +17,10 @@ class CreateDiagnoseTable extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->integer('gds');
-            $table->integer('gdp');
-            $table->integer('tol_gluc');
-            $table->integer('HbA1C');
+            $table->float('gds');
+            $table->float('gdp');
+            $table->float('tol_gluc');
+            $table->float('HbA1C');
             $table->timestamps();
         });
     }

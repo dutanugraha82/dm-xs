@@ -17,8 +17,10 @@ class CreateSymptomsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->integer('min');
-            $table->integer('max');
+            $table->float('low_start');
+            $table->float('low_end');
+            $table->float('high_start');
+            $table->float('high_end');
             $table->timestamps();
         });
     }
