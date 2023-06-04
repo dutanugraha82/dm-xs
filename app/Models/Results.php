@@ -15,4 +15,8 @@ class Results extends Model
         'conclusion',
         'status_dm',
     ];
+
+    public function users(){
+        return $this->belongsTo(User::class,'id');
+    }
 }

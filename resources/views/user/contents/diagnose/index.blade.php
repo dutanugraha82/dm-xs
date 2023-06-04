@@ -13,12 +13,12 @@
                     <input type="number" class="form-control" name="bak">
                 </div>
                 <div class="mb-3">
-                    <label for="gds">Jumlah Rasa Lapar <sub class="text-danger">/hari</sub></label>
-                    <input type="number" class="form-control" name="lapar">
-                </div>
-                <div class="mb-3">
                     <label for="tol_gluc">Jumlah Rasa Haus <sub class="text-danger">/hari</sub></label>
                     <input type="number" class="form-control" name="haus">
+                </div>
+                <div class="mb-3">
+                    <label for="gds">Jumlah Rasa Lapar <sub class="text-danger">/hari</sub></label>
+                    <input type="number" class="form-control" name="lapar">
                 </div>
                 <div class="mb-3">
                     <label for="tol_gluc">Hasil Gula Darah Sewaktu <sub class="text-danger">mg/dL</sub></label>

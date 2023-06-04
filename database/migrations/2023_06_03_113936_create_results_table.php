@@ -17,7 +17,7 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->string('conclusion');
+            $table->longText('conclusion');
             $table->enum('status_dm',['positive','negative']);
             $table->timestamps();
         });

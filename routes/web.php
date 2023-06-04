@@ -40,11 +40,12 @@ Route::middleware(['user','auth','revalidate'])->group(function(){
     Route::put('/profile/{id}',[ProfileController::class,'update']);
     Route::get('/diagnose',[DiagnoseController::class,'index']);
     Route::post('/diagnose',[DiagnoseController::class,'storeDiagnose']);
+    Route::get('/results/{id}',[DiagnoseController::class,'results']);
 });
 
 Route::middleware(['superadmin','auth','revalidate'])->prefix('superadmin')->name('superadmin.')->group(function(){
     Route::get('/dashboard', function(){
-        return view('superadmin.master');
+        return view('superadmin.dashboard');
     });
     Route::get('/symptoms', [SymptomsController::class, 'index'])->name('symptoms.index');
     Route::resource('symptoms', SymptomsController::class)->except('index');

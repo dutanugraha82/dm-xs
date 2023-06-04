@@ -78,7 +78,8 @@ class SymptomsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Symptoms::find($id);
+        return view('superadmin.contents.symptoms.edit', compact('data'));
     }
 
     /**
@@ -90,7 +91,24 @@ class SymptomsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'code' => 'required',
+            'lowStart' => 'required',
+            'lowEnd' => 'required',
+            'highStart' => 'required',
+            'highEnd' => 'required',
+        ]);
+
+        Symptoms::find($id)->update([
+            'name' => $request->name,
+            'code' => $request->code,
+            'low_start' => $request->lowStart,
+            'low_end' => $request->lowEnd,
+            'high_start' => $request->highStart,
+            'high_end' => $request->highEnd
+        ]);
+        return redirect(route('superadmin.symptoms.index'));
     }
 
     /**
@@ -101,6 +119,8 @@ class SymptomsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Symptoms::find($id)->delete();
+
+        return redirect(route('superadmin.symptoms.index'));
     }
 }
