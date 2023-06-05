@@ -4,7 +4,9 @@
 @endsection
 @section('content')
     <div class="container-fluid">
-        <div class="card p-2">
+        <div class="card p-3">
+            <h4>Hasil Diagnosa</h4>
+            <hr>
             <div class="mb-3">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" value="{{ auth()->user()->name  }}" readonly>
